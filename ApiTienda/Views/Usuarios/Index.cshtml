@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ApiTienda.Models.User>
+﻿@model IEnumerable<ApiTienda.Models.Usuarios>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.identificacion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoIndetificacion)
+                @Html.DisplayNameFor(model => model.TipoIdentificacion)
             </th>
             <th></th>
         </tr>
@@ -46,7 +46,7 @@
                 @Html.DisplayFor(modelItem => item.identificacion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TipoIndetificacion)
+                    @Html.DisplayFor(modelItem => item.TipoIdentificacion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
