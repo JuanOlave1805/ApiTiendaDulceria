@@ -1,5 +1,4 @@
-﻿@using ApiTiendaDulceria.Models.Usuarios
-@model Usuarios
+﻿@model ApiTiendaDulceria.Models.Usuarios.Ventas
 
 @{
     ViewData["Title"] = "Delete";
@@ -9,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>User</h4>
+    <h4>Usuarios</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -35,6 +34,30 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.identificacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.id_rol)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id_rol)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.id_tipo_identificacion)

@@ -1,5 +1,4 @@
-﻿@using ApiTiendaDulceria.Models.Usuarios
-@model IEnumerable<Usuarios>
+﻿@model IEnumerable<ApiTiendaDulceria.Models.Usuarios.Ventas>
 
 @{
     ViewData["Title"] = "Index";
@@ -26,6 +25,18 @@
                 @Html.DisplayNameFor(model => model.identificacion)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_rol)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.id_tipo_identificacion)
             </th>
             <th></th>
@@ -47,7 +58,19 @@
                 @Html.DisplayFor(modelItem => item.identificacion)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.id_tipo_identificacion)
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_tipo_identificacion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

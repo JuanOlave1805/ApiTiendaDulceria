@@ -1,4 +1,4 @@
-﻿@model ApiTiendaDulceria.Models.Tipos_Identificacion.TipoIdentificacion
+﻿@model ApiTiendaDulceria.Models.Roles.Roles
 
 @{
     ViewData["Title"] = "Details";
@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>TipoIdentificacion</h4>
+    <h4>Roles</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -15,12 +15,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.diminutivo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.diminutivo)
         </dd>
     </dl>
 </div>
