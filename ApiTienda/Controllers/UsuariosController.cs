@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ApiTienda.Models;
+using ApiTiendaDulceria.Models.Usuarios;
 
-namespace ApiTienda.Controllers
+namespace ApiTiendaDulceria.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

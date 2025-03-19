@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using ApiTiendaDulceria.Models.Tipos_Identificacion;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,12 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // Agregar servicios al contenedor
 builder.Services.AddControllers();
 
-// Configurar DbContext para SQL Server
+// Configurar DbContext para SQL Server -- Contexto Usuarios
 builder.Services.AddDbContext<ContextoUsuarios>(options =>
+    options.UseSqlServer(connectionString));
+
+// Configurar DbContext para SQL Server -- Contexto Tipos Documentos
+builder.Services.AddDbContext<ContextoTipoIdentificacion>(options =>
     options.UseSqlServer(connectionString));
 
 // Habilitar Swagger

@@ -1,4 +1,4 @@
-﻿using ApiTienda.Models;
+﻿using ApiTiendaDulceria.Models.Usuarios;
 using Microsoft.EntityFrameworkCore;
 
 /// <summary>
