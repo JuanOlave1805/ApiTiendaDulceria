@@ -16,5 +16,5 @@ public class ContextoUsuarios : DbContext
     /// <summary>
     /// Conjunto de datos que representa la tabla Usuarios en la base de datos.
     /// </summary>
-    public DbSet<Ventas> usuarios { get; set; }
+    public DbSet<Usuarios> usuarios { get; set; }
 }

@@ -16,7 +16,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddControllers();
 
 // Configurar DbContext para SQL Server -- Contexto Usuarios
-builder.Services.AddDbContext<ContextoVentas>(options =>
+builder.Services.AddDbContext<ContextoProveedores>(options =>
     options.UseSqlServer(connectionString));
 
 // Configurar DbContext para SQL Server -- Contexto Tipos Documentos

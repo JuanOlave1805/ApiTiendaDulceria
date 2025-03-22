@@ -12,9 +12,9 @@ namespace ApiTiendaDulceria.Controllers
     [Route("api/[controller]")]
     public class UsuariosController : ControllerBase
     {
-        private readonly ContextoVentas _context;
+        private readonly ContextoUsuarios _context;
 
-        public UsuariosController(ContextoVentas context)
+        public UsuariosController(ContextoUsuarios context)
 
         {
             _context = context;
@@ -25,7 +25,7 @@ namespace ApiTiendaDulceria.Controllers
         /// </summary>
         /// <returns>Lista de usuarios.</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ventas>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<Usuarios>>> GetUsers()
         {
             return Ok(await _context.usuarios.ToListAsync());
         }
@@ -36,7 +36,7 @@ namespace ApiTiendaDulceria.Controllers
         /// <param name="id">ID del usuario.</param>
         /// <returns>Objeto usuario.</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Ventas>> GetUser(int id) // Cambiado a int para coincidir con la BD
+        public async Task<ActionResult<Usuarios>> GetUser(int id) // Cambiado a int para coincidir con la BD
         {
             var user = await _context.usuarios.FindAsync(id);
             if (user == null)
@@ -52,7 +52,7 @@ namespace ApiTiendaDulceria.Controllers
         /// <param name="user">Objeto usuario.</param>
         /// <returns>Usuario creado.</returns>
         [HttpPost]
-        public async Task<ActionResult<Ventas>> CreateUser([FromBody] Ventas user)
+        public async Task<ActionResult<Usuarios>> CreateUser([FromBody] Usuarios user)
         {
             if (user == null)
             {
@@ -72,7 +72,7 @@ namespace ApiTiendaDulceria.Controllers
         /// <param name="user">Objeto usuario con los datos actualizados.</param>
         /// <returns>Resultado de la operación.</returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] Ventas user)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] Usuarios user)
         {
             if (id != user.Id)
             {
