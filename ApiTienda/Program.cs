@@ -18,64 +18,58 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // Agregar servicios al contenedor
 builder.Services.AddControllers();
 
-// Configurar DbContext para SQL Server -- Contexto Categorias
+// Configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost5500", policy =>
+    {
+        policy.WithOrigins("http://127.0.0.1:5500")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// Configurar DbContexts
 builder.Services.AddDbContext<ContextoCategorias>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Clientes
 builder.Services.AddDbContext<ContextoClientes>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Compras
 builder.Services.AddDbContext<ContextoCompras>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Detalle Compra
 builder.Services.AddDbContext<ContextoDetalle_Compra>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Detalle Venta
 builder.Services.AddDbContext<ContextoDetalles_Venta>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Oferta Categoria
 builder.Services.AddDbContext<ContextoOferta_Categoria>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Ofertas
 builder.Services.AddDbContext<ContextoOfertas>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Producto Categorias
 builder.Services.AddDbContext<ContextoProducto_Categoria>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Productos
 builder.Services.AddDbContext<ContextoProductos>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Proveedores
 builder.Services.AddDbContext<ContextoProveedores>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Roles
 builder.Services.AddDbContext<ContextoRoles>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Tipos Documentos
 builder.Services.AddDbContext<ContextoTipoIdentificacion>(options =>
     options.UseSqlServer(connectionString));
 
-// Configurar DbContext para SQL Server -- Contexto Usuarios
-builder.Services.AddDbContext<ContextoProveedores>(options =>
-    options.UseSqlServer(connectionString));
-
-// Configurar DbContext para SQL Server -- Contexto Ventas
 builder.Services.AddDbContext<ContextoVentas>(options =>
     options.UseSqlServer(connectionString));
 
-
-// Habilitar Swagger
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -89,6 +83,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Usar CORS (debe estar antes de Authorization)
+app.UseCors("AllowLocalhost5500");
+
 app.UseAuthorization();
 
 app.MapControllers();
