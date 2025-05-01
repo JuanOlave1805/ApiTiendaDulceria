@@ -5,6 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiTiendaDulceria.Models.Usuarios;
+using Microsoft.AspNetCore.Identity.Data;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Configuration;
+using ApiTiendaDulceria.Metodos;
 
 namespace ApiTiendaDulceria.Controllers
 {
@@ -14,10 +21,13 @@ namespace ApiTiendaDulceria.Controllers
     {
         private readonly ContextoUsuarios _context;
 
-        public UsuariosController(ContextoUsuarios context)
+        private readonly IConfiguration _configuration;
+
+        public UsuariosController(ContextoUsuarios context, IConfiguration configuration)
 
         {
             _context = context;
+            _configuration = configuration; 
         }
 
         /// <summary>
@@ -129,5 +139,27 @@ namespace ApiTiendaDulceria.Controllers
         {
             return _context.usuarios.Any(e => e.Id == id);
         }
+
+        [HttpGet("Login")]
+        public IActionResult Login()
+        {
+            var username = Request.Headers["username"].ToString();
+            var password = Request.Headers["password"].ToString();
+
+            var usuario = _context.usuarios.FirstOrDefault(u =>
+                u.identificacion == username && u.password == password);
+
+            if (usuario == null)
+                return Unauthorized("Credenciales inválidas");
+
+            return Ok(new
+            {
+                usuario.Id,
+                usuario.identificacion,
+                usuario.nombre,
+                usuario.apellido
+            });
+        }
+
     }
 }
